@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">poms23</string>
+    <string name="play_the_quiz_text">Play the quiz</string>
+    <string name="best_attempt_text">Best attempt:</string>
+    <string name="go_back_text">Go back</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="next_text">Next</string>
+</resources>

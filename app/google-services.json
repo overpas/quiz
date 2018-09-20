@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "53666143915",
+    "firebase_url": "https://poms23-af8c2.firebaseio.com",
+    "project_id": "poms23-af8c2",
+    "storage_bucket": "poms23-af8c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53666143915:android:7cc4b28c01417a0f",
+        "android_client_info": {
+          "package_name": "by.overpass.poms23"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "53666143915-16u645oeec9lr3brr6f94ep8sfocfe02.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgdO1KjFbFt9xxszcQSvVGHGaI61Gk40I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
