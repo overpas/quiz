@@ -6,10 +6,12 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioGroup
 import by.overpass.poms23.QUESTION_KEY
 
 import by.overpass.poms23.R
 import by.overpass.poms23.data.model.pojo.Question
+import by.overpass.poms23.ui.quiz.activity.QuizActivity
 import kotlinx.android.synthetic.main.fragment_quiz.*
 
 class QuizFragment : Fragment() {
@@ -41,5 +43,7 @@ class QuizFragment : Fragment() {
                     rbOptionThree.text = it.options?.get(2)
                     rbOptionFour.text = it.options?.get(3)
                 }
+        rgOptions.setOnCheckedChangeListener(activity as QuizActivity)
     }
+
 }

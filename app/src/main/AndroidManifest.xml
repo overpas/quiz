@@ -19,7 +19,7 @@
         </activity>
         <activity
             android:name=".ui.quiz.activity.QuizActivity"
-            android:noHistory="true" />
+            android:screenOrientation="portrait" />
         <activity android:name=".ui.result.activity.ResultActivity" />
     </application>
 

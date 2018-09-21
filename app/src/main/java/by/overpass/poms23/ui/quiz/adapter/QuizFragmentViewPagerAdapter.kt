@@ -7,9 +7,15 @@ import by.overpass.poms23.data.model.pojo.Question
 import by.overpass.poms23.ui.quiz.fragment.QuizFragment
 
 class QuizFragmentViewPagerAdapter(
-        private val questions: List<Question>,
+        questions: List<Question>,
         fragmentManager: FragmentManager
 ) : FragmentStatePagerAdapter(fragmentManager) {
+
+    internal var questions: List<Question> = emptyList()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun getItem(position: Int): Fragment =
             QuizFragment.getInstance(questions.first { it.ordinalNumber == position })

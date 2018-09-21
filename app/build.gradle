@@ -9,6 +9,7 @@ android {
         applicationId "by.overpass.poms23"
         minSdkVersion 19
         targetSdkVersion 28
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -39,6 +40,7 @@ dependencies {
     kapt "android.arch.persistence.room:compiler:1.1.1"
     implementation 'com.google.code.gson:gson:2.8.5'
     debugImplementation 'im.dino:dbinspector:3.4.1@aar'
+    implementation 'com.android.support:multidex:1.0.3'
 }
 
 androidExtensions {
