@@ -3,16 +3,18 @@ package by.overpass.poms23.viewmodel.quiz
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.ViewModel
 import android.content.Intent
+import by.overpass.poms23.BEST_SCORE_KEY
 import by.overpass.poms23.CURRENT_SCORE_KEY
 import by.overpass.poms23.data.model.pojo.Question
-import by.overpass.poms23.repository.quiz.CachingRepository
 import by.overpass.poms23.repository.quiz.QuizRepository
+import by.overpass.poms23.repository.quiz.RemoteRepository
 import by.overpass.poms23.ui.quiz.activity.QuizActivity
 import by.overpass.poms23.ui.result.activity.ResultActivity
+import by.overpass.poms23.utils.PrefUtil
 
 class QuizViewModel : ViewModel() {
 
-    private val quizRepository: QuizRepository = CachingRepository()
+    private val quizRepository: QuizRepository = RemoteRepository()
     private var loadedQuestions: List<Question>? = null
     private var userAnswers: MutableMap<Question, Int?> = mutableMapOf()
 
@@ -37,7 +39,12 @@ class QuizViewModel : ViewModel() {
 
     fun finishQuiz(quizActivity: QuizActivity) {
         val intent = Intent(quizActivity, ResultActivity::class.java)
-        intent.putExtra(CURRENT_SCORE_KEY, userAnswers.processResult())
+        val result = userAnswers.processResult()
+        PrefUtil.putInt(CURRENT_SCORE_KEY, result)
+        PrefUtil
+                .getInt(BEST_SCORE_KEY)
+                .takeIf { result > it }
+                ?.apply { PrefUtil.putInt(BEST_SCORE_KEY, result) }
         quizActivity.finish()
         quizActivity.startActivity(intent)
     }
