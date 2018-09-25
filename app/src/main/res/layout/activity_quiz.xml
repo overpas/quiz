@@ -6,6 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".ui.quiz.activity.QuizActivity">
 
+    <TextView
+        android:id="@+id/tvCorrectHint"
+        android:text="@string/correct_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCorrect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tvCorrectHint"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvIncorrectHint"
+        android:text="@string/incorrect_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/tvIncorrect"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@id/tvIncorrect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <android.support.v4.view.ViewPager
         android:id="@+id/vpQuizFragmentContainer"
         android:layout_width="0dp"
@@ -13,13 +43,13 @@
         app:layout_constraintBottom_toTopOf="@+id/btnNext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/tvCorrectHint" />
 
     <Button
         android:id="@id/btnNext"
-        android:text="@string/next_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:text="@string/next_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

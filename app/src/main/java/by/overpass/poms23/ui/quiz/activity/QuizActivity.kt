@@ -2,19 +2,15 @@ package by.overpass.poms23.ui.quiz.activity
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
-import android.content.Intent
 import android.os.Bundle
-import android.support.v4.view.PagerAdapter
+import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.RadioGroup
 import by.overpass.poms23.R
-import by.overpass.poms23.R.id.vpQuizFragmentContainer
-import by.overpass.poms23.data.model.pojo.Question
+import by.overpass.poms23.USERNAME_KEY
 import by.overpass.poms23.ui.quiz.adapter.QuizFragmentViewPagerAdapter
-import by.overpass.poms23.ui.result.activity.ResultActivity
 import by.overpass.poms23.viewmodel.quiz.QuizViewModel
-import com.google.android.gms.tasks.OnSuccessListener
 import kotlinx.android.synthetic.main.activity_quiz.*
 
 class QuizActivity : AppCompatActivity(), View.OnClickListener, RadioGroup.OnCheckedChangeListener {
@@ -25,15 +21,26 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener, RadioGroup.OnChe
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
-        quizFragmentsViewPagerAdapter = QuizFragmentViewPagerAdapter(
-                emptyList(), supportFragmentManager
-        )
+        quizFragmentsViewPagerAdapter = QuizFragmentViewPagerAdapter(supportFragmentManager)
         vpQuizFragmentContainer.adapter = quizFragmentsViewPagerAdapter
+        vpQuizFragmentContainer.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener(){
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                quizViewModel.checkAnswers(position)
+            }
+        })
         quizViewModel = ViewModelProviders.of(this).get(QuizViewModel::class.java)
+        quizViewModel.username = intent.getStringExtra(USERNAME_KEY)
         quizViewModel.questions.observe(this, Observer { list ->
             list?.let {
                 quizFragmentsViewPagerAdapter.questions = it
             }
+        })
+        quizViewModel.correctAnswers.observe(this, Observer {
+            tvCorrect.text = it.toString()
+        })
+        quizViewModel.incorrectAnswers.observe(this, Observer {
+            tvIncorrect.text = it.toString()
         })
         btnNext.setOnClickListener(this)
     }

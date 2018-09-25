@@ -6,7 +6,7 @@ import by.overpass.poms23.data.db.Poms23AppDB
 import by.overpass.poms23.data.model.pojo.Question
 import by.overpass.poms23.utils.runInBackground
 
-class LocalRepository : QuizRepository {
+class LocalQuizRepository : QuizRepository {
 
     private val questionDao by lazy {
         return@lazy Poms23AppDB.getInstance(Poms23App.getAppContext()).getQuestionDao()

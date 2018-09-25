@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioGroup
 import by.overpass.poms23.QUESTION_KEY
 
 import by.overpass.poms23.R

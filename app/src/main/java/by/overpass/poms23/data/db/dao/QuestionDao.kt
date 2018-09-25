@@ -11,7 +11,7 @@ import by.overpass.poms23.data.model.pojo.Question
 interface QuestionDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(launches: List<Question>)
+    fun insert(questions: List<Question>)
 
     @Query("SELECT * FROM Question ORDER BY ordinalNumber ASC")
     fun selectAll(): LiveData<List<Question>>

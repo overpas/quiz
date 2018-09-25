@@ -6,13 +6,17 @@ import android.arch.persistence.room.RoomDatabase
 import android.arch.persistence.room.TypeConverters
 import android.content.Context
 import by.overpass.poms23.data.db.dao.QuestionDao
+import by.overpass.poms23.data.db.dao.UserDao
 import by.overpass.poms23.data.model.pojo.Question
+import by.overpass.poms23.data.model.pojo.User
 
-@Database(entities = [Question::class], version = 1)
+@Database(entities = [Question::class, User::class], version = 2)
 @TypeConverters(OptionsConverter::class)
 abstract class Poms23AppDB : RoomDatabase() {
 
     abstract fun getQuestionDao(): QuestionDao
+
+    abstract fun getUserDao(): UserDao
 
     companion object {
         private var INSTANCE: Poms23AppDB? = null

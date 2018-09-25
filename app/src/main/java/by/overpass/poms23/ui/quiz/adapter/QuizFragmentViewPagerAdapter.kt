@@ -7,7 +7,6 @@ import by.overpass.poms23.data.model.pojo.Question
 import by.overpass.poms23.ui.quiz.fragment.QuizFragment
 
 class QuizFragmentViewPagerAdapter(
-        questions: List<Question>,
         fragmentManager: FragmentManager
 ) : FragmentStatePagerAdapter(fragmentManager) {
 
